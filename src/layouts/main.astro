@@ -1,15 +1,56 @@
 ---
-const { content } = Astro.props;
+import { pageMap, pages } from "../pages";
+
+const { active } = Astro.props;
+
+const title = `Waterbuckit - ${active}`;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white dark:bg-slate-900 dark:text-white">
+    <header class="border-b dark:border-slate-800">
+      <div
+        class="mx-auto max-w-7xl px-2 sm:px-4 divide-y dark:divide-slate-800 lg:px-8"
+      >
+        <div class="relative flex h-16 justify-between">
+          <div class="relative z-10 flex px-2 lg:px-0">
+            <div class="flex flex-shrink-0 items-center">
+              <h1 class="text-xl font-semibold">Adam Royal</h1>
+            </div>
+          </div>
+          <div class="relative z-10 flex items-center lg:hidden"></div>
+        </div>
+        <nav class="flex lg:space-x-8 lg:py-2" aria-label="Global">
+          {
+            pages.map((p) => {
+              const { path, title } = pageMap[p]
+              const isActive = active === title;
+              return (
+                <a
+                  href={path}
+                  class:list={[
+                    "inline-flex items-center rounded-md py-2 px-3 text-sm font-medium",
+                    !isActive && "dark:hover:text-sky-400 hover:text-sky-500",
+                    isActive && "text-sky-500 dark:text-sky-400",
+                  ]}
+                  aria-current={isActive ? "page" : "false"}
+                >
+                  {title}
+                </a>
+              );
+            })
+          }
+        </nav>
+      </div>
+    </header>
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+  </body>
 </html>
