@@ -1,5 +1,4 @@
 ---
-import Link from "../components/Link.astro";
 import Main from "../layouts/main.astro";
 import { Pages, pageMap } from "../pages";
 import projects from "../projects";
@@ -10,17 +9,16 @@ import projects from "../projects";
   <div class="flex flex-col mt-10 w-full gap-8">
     <h1 class="text-4xl font-bold">Projects</h1>
     <nav class="w-full">
-      <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-3 grid-rows-3 gap-4">
+      <ul role="list" class="divide-y divide-gray-800">
       {projects.map((project) => (
-        <li class="rounded-lg border border-slate-400 bg-slate-700 relative p-4 focus-within:">
-          <h2 class="font-bold text-xl">
-            <Link href={project.href}>
-            {project.title}
-            </Link>
-          </h2>
-          <p class="mt-4">
-            {project.description}
-          </p>
+        <li class="flex flex-col justify-between gap-x-6 py-5">
+          <a
+              href={project.href}
+              class="inline-flex items-center rounded-md py-2 text-sm font-medium dark:hover:text-sky-400 hover:text-sky-500"
+            >
+              {project.title}
+          </a>
+          <p class="mt-1 truncate text-xs leading-5 text-gray-400">{project.description}</p>
         </li>
       ))}
       </ul>
