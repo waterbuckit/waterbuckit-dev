@@ -1,27 +1,26 @@
 ---
+import List from "../components/List.astro";
+import ListItem from "../components/ListItem.astro";
 import Main from "../layouts/main.astro";
 import { Pages, pageMap } from "../pages";
 import projects from "../projects";
-
 ---
 
 <Main active={pageMap[Pages.PROJECTS].title}>
   <div class="flex flex-col mt-10 w-full gap-8">
     <h1 class="text-4xl font-bold">Projects</h1>
     <nav class="w-full">
-      <ul role="list" class="divide-y divide-gray-800">
-      {projects.map((project) => (
-        <li class="flex flex-col justify-between gap-x-6 py-5">
-          <a
+      <List>
+        {
+          projects.map((project) => (
+            <ListItem
               href={project.href}
-              class="inline-flex items-center rounded-md py-2 text-sm font-medium dark:hover:text-sky-400 hover:text-sky-500"
-            >
-              {project.title}
-          </a>
-          <p class="mt-1 truncate text-xs leading-5 text-gray-400">{project.description}</p>
-        </li>
-      ))}
-      </ul>
+              title={project.title}
+              description={project.description}
+            />
+          ))
+        }
+      </List>
     </nav>
   </div>
 </Main>

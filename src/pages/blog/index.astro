@@ -1,0 +1,32 @@
+---
+import blogs from "../../blogs";
+import List from "../../components/List.astro";
+import ListItem from "../../components/ListItem.astro";
+import Main from "../../layouts/main.astro";
+import { Pages, pageMap } from "../../pages";
+
+const blogValues = Object.values(blogs);
+---
+
+<Main active={pageMap[Pages.BLOG].title}>
+  <div class="flex flex-col mt-10 w-full gap-8">
+    <h1 class="text-4xl font-bold">Blog</h1>
+    <h2 class="text-2xl italic font-thin">
+      Ramblings from a man suffering entropy-of-the-curls
+    </h2>
+    <nav class="w-full">
+      <List empty={blogValues.length === 0}>
+        {
+          blogValues.map((blog) => (
+            <ListItem
+              description={blog.description}
+              title={blog.title}
+              href={blog.href}
+              date={blog.date}
+            />
+          ))
+        }
+      </List>
+    </nav>
+  </div>
+</Main>

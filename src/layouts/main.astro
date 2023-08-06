@@ -1,6 +1,10 @@
 ---
 import { pageMap, pages } from "../pages";
 
+interface Props {
+  active?: string; 
+}
+
 const { active } = Astro.props;
 
 const title = `Waterbuckit - ${active}`;

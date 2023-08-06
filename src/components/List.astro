@@ -1,0 +1,19 @@
+---
+interface Props {
+  empty?: boolean;
+}
+
+const { empty } = Astro.props;
+---
+
+{
+  empty ? (
+    <p class="text-gray-500 text-center py-4 border-dashed rounded-md border border-gray-500">
+      Nobody here but us chickens! 🐔🐔
+    </p>
+  ) : (
+    <ul class="divide-y divide-gray-800">
+      <slot />
+    </ul>
+  )
+}
