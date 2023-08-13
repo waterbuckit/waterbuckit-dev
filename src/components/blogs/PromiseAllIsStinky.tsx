@@ -402,7 +402,7 @@ const PromiseAllIsStinky = () => {
         This is great, and the over all result is considered a fulfilled promise
         without being unnaturally returned to <code>main</code>! 🎉
       </p>
-      <h3>So wherefor cometh thus the stench!? 🤷‍♂️</h3>
+      <h3>So wherefore cometh thus the stench!? 🤷‍♂️</h3>
       <p>
         I want to know my types. At all times, I want to know my types. If I
         don't know my types, a whole new class of issues beyond just "business
