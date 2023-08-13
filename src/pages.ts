@@ -1,27 +1,27 @@
 export enum Pages {
-  HOME,
-  BLOG,
-  ABOUT,
-  PROJECTS,
+  Home,
+  Blog,
+  About,
+  Projects,
 }
 
 export const pageMap: Record<Pages, { path: string; title: string }> = {
-  [Pages.HOME]: {
+  [Pages.Home]: {
     path: "/",
     title: "Home",
   },
-  [Pages.ABOUT]: {
+  [Pages.About]: {
     path: "/about",
     title: "About",
   },
-  [Pages.BLOG]: {
+  [Pages.Blog]: {
     path: "/blog",
     title: "Blog",
   },
-  [Pages.PROJECTS]: {
+  [Pages.Projects]: {
     path: "/projects",
     title: "Projects",
   },
 };
 
-export const pages = [Pages.HOME, Pages.ABOUT, Pages.BLOG, Pages.PROJECTS];
+export const pages = [Pages.Home, Pages.About, Pages.Blog, Pages.Projects];
